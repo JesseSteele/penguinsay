@@ -11,7 +11,7 @@ BuildRequires:  bash
 Requires:       bash
 
 %description
-Written for Linux in Linux
+Penguin talkback written in Linux for Linux
 
 %prep
 echo "####################################################

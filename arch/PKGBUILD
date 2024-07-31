@@ -1,7 +1,7 @@
 pkgname=penguinsay
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="The talking penguin"
+pkgdesc="Penguin talkback written in Linux for Linux"
 url="https://github.com/JesseSteele/penguinsay"
 #arch=('x86_64')
 arch=('any')

@@ -1,6 +1,6 @@
 # penguinsay
 ## The talking penguin
-Written for Linux in Linux
+Penguin talkback written in Linux for Linux
 
 ## Create the simple Linux install package for `penguinsay`
 This is a guide to create an installer package for the `penguinsay` command on:
@@ -8,11 +8,11 @@ This is a guide to create an installer package for the `penguinsay` command on:
 2. Debian (Ubuntu, Kali, Mint, et al)
 3. RPM (OpenSUSE, RedHat/CentOS, Fedora, et al)
 
-Examples for each already resides in the repository.
+Working examples for each already resides in this repository
 
 ### Create and install the `penguinsay` package directly from this repo
 
-| **Arch** :$ (Manjaro, Black Arch)
+| **Arch** :$ (& Manjaro, Black Arch)
 
 ```console
 git clone https://github.com/JesseSteele/penguinsay.git
@@ -20,7 +20,7 @@ cd penguinsay/arch
 makepkg -si
 ```
 
-| **Debian** :$ (Ubuntu, Kali, Mint)
+| **Debian** :$ (& Ubuntu, Kali, Mint)
 
 ```console
 git clone https://github.com/JesseSteele/penguinsay.git
@@ -29,7 +29,7 @@ dpkg-deb --build penguinsay
 sudo dpkg -i penguinsay.deb
 ```
 
-| **RedHat/CentOS** :$ (Fedora)
+| **RedHat/CentOS** :$ (& Fedora)
 
 ```console
 git clone https://github.com/JesseSteele/penguinsay.git
@@ -42,7 +42,7 @@ sudo rpm -i ~/rpmbuild/RPMS/noarch/penguinsay-1.0.0-1.noarch.rpm  # Change filen
 rm -rf ~/rpmbuild
 ```
 
-| **OpenSUSE** :$
+| **OpenSUSE** :$ (& Tumbleweed)
 
 ```console
 git clone https://github.com/JesseSteele/penguinsay.git
@@ -61,7 +61,17 @@ Instructions explain each in detail to create these packages from scratch...
 
 - These instructions presume you can access [penguinsay.sh](https://github.com/JesseSteele/penguinsay/blob/main/penguinsay.sh).
 
-### Arch Linux Package (`penguinsay-1.0.0-1-any.pkg.tar.zst`) - Create the Arch package directory structure:
+### I. Arch Linux Package (`penguinsay-1.0.0-1-any.pkg.tar.zst`)
+*Arch package directory structure:*
+
+| **`arch/`** :
+
+```
+arch/
+├─penguinsay.sh
+└─PKGBUILD
+```
+
 - Create directory: `arch`
 - In `arch/` create file: `PKGBUILD`
 
@@ -71,7 +81,7 @@ Instructions explain each in detail to create these packages from scratch...
 pkgname=penguinsay
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="The talking penguin"
+pkgdesc="Penguin talkback written in Linux for Linux"
 url="https://github.com/JesseSteele/penguinsay"
 #arch=('x86_64')
 arch=('any')
@@ -88,15 +98,6 @@ package() {
 ```
 
 - Place file `penguinsay.sh` in the same directory as `PKGBUILD`
-
-| **`arch/`** :
-
-```
-arch/
-├─penguinsay.sh
-└─PKGBUILD
-```
-
 - Build package:
   - Navigate to directory `arch/`
   - Run this, then the package will be built, then installed with `pacman`:
@@ -128,27 +129,8 @@ sudo pacman -U penguinsay-1.0.0-1-any.pkg.tar.zst
 sudo pacman -R penguinsay
 ```
 
-### Debian Package (`penguinsay.deb`) - Create the Debian package directory structure:
-- Create directories: `deb/penguinsay/DEBIAN`
-- In `DEBIAN/` create file: `control`
-
-| **`deb/penguinsay/DEBIAN/control`** :
-
-```
-Package: penguinsay
-Version: 1.0.0
-Section: base
-Priority: optional
-#Architecture: amd64
-Architecture: all
-Maintainer: Jesse Steele <penguinsay@jessesteele.com>
-Depends: bash (>= 4.0)
-Description: The talking penguin
-```
-
-- Create directories: `deb/penguinsay/usr/local/bin/`
-- Rename and place file `penguinsay.sh` at `deb/penguinsay/usr/local/bin/penguinsay`
-  - Make it executable: `chmod +x deb/penguinsay/usr/local/bin/penguinsay`
+### II. Debian Package (`penguinsay.deb`)
+*Debian package directory structure:*
 
 | **`deb/`** :
 
@@ -163,6 +145,26 @@ deb/
         └─penguinsay
 ```
 
+- Create directories: `deb/penguinsay/DEBIAN`
+- In `DEBIAN/` create file: `control`
+
+| **`deb/penguinsay/DEBIAN/control`** :
+
+```
+Package: penguinsay
+Version: 1.0.0
+Section: base
+Priority: optional
+#Architecture: amd64
+Architecture: all
+Maintainer: Jesse Steele <penguinsay@jessesteele.com>
+Depends: bash (>= 4.0)
+Description: Penguin talkback written in Linux for Linux
+```
+
+- Create directories: `deb/penguinsay/usr/local/bin/`
+- Rename and place file `penguinsay.sh` at `deb/penguinsay/usr/local/bin/penguinsay`
+  - Make it executable with :$ `chmod +x deb/penguinsay/usr/local/bin/penguinsay`
 - Build package:
   - Navigate to directory `deb/`
   - Run this, then the package will be built, then installed:
@@ -187,7 +189,20 @@ sudo dpkg -i penguinsay.deb  # Install the package
 sudo apt-get remove penguinsay
 ```
 
-### RPM Package (`penguinsay-1.0.0-1.noarch.rpm`) - Create the RPM package directory structure:
+### III. RPM Package (`penguinsay-1.0.0-1.noarch.rpm`)
+*RPM package directory structure:*
+
+| **`rpm/`** :
+
+```
+rpm/
+└─rpmbuild/
+  ├─SPECS/
+  │ └─penguinsay.spec
+  └─SOURCES/
+    └─penguinsay.sh
+```
+
 - Create directories: `rpm/rpmbuild/SPECS`
 - In `SPECS/` create file: `penguinsay.spec`
 
@@ -207,7 +222,7 @@ BuildRequires:  bash
 Requires:       bash
 
 %description
-Written for Linux in Linux
+Penguin talkback written in Linux for Linux
 
 %prep
 echo "####################################################
@@ -230,18 +245,6 @@ install -m 755 %{_sourcedir}/penguinsay.sh %{buildroot}/usr/local/bin/penguinsay
 
 - Create directory: `rpm/rpmbuild/SOURCES/`
 - Place file `penguinsay.sh` in directory `rpm/rpmbuild/SOURCES/penguinsay/`
-
-| **`rpm/`** :
-
-```
-rpm/
-└─rpmbuild/
-  ├─SPECS/
-  │ └─penguinsay.spec
-  └─SOURCES/
-    └─penguinsay.sh
-```
-
 - Install the `rpm-build` and `rpmdevtools` packages
 
 | **RedHat/CentOS** :$
