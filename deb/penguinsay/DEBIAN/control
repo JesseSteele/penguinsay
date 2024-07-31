@@ -1,0 +1,9 @@
+Package: penguinsay
+Version: 1.0.0
+Section: base
+Priority: optional
+#Architecture: amd64
+Architecture: all
+Maintainer: Jesse Steele <penguinsay@jessesteele.com>
+Depends: bash (>= 4.0)
+Description: The talking penguin

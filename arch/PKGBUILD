@@ -1,0 +1,17 @@
+pkgname=penguinsay
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="The talking penguin"
+url="https://github.com/JesseSteele/penguinsay"
+#arch=('x86_64')
+arch=('any')
+license=('GPL')
+depends=('bash')  # Dependency on bash package
+#source=("$pkgname-$pkgver.sh")
+source=("$pkgname.sh")
+sha256sums=('SKIP')
+
+package() {
+  cd "$srcdir"
+  install -Dm755 "$srcdir/$source" "$pkgdir/usr/bin/$pkgname"
+}
