@@ -7,7 +7,6 @@ License:        GPL
 URL:            https://github.com/JesseSteele/penguinsay
 
 BuildArch:      noarch
-BuildRequires:  bash
 Requires:       bash
 
 %description
@@ -30,3 +29,5 @@ install -m 755 %{_sourcedir}/penguinsay.sh %{buildroot}/usr/local/bin/penguinsay
 /usr/local/bin/penguinsay
 
 %changelog
+* Thu Jan 01 1970 Jesse <penguinsay@inkisaverb.com> - 1.0.0-1
+- Something started

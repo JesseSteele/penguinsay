@@ -118,10 +118,13 @@ sudo pacman -U penguinsay-1.0.0-1-any.pkg.tar.zst
 ```
 
 - Special notes about Arch:
-  - The name of the directory containing the package files does not matter.
-  - `PKGBUILD` is the instruction file, not a directory as might be expected with other package builders.
-  - `makepkg` must be run from the same directory containing `PKGBUILD`.
-  - The `.pkg.tar.zst` file will appear inside the containing directory. 
+  - We don't need to resolve any dependencies, we can omit the `-s` flag with `makepkg`
+    - This package only needs `bash` as a dependency, which should already be installed merely to execute the script
+      - `depends=('bash')` is redundant and only serves as an example in `PKGBUILD`
+  - The name of the directory containing the package files does not matter
+  - `PKGBUILD` is the instruction file, not a directory as might be expected with other package builders
+  - `makepkg` must be run from the same directory containing `PKGBUILD`
+  - The `.pkg.tar.zst` file will appear inside the containing directory
 
 | **Uninstall Arch package** :$ (optional)
 
@@ -176,12 +179,15 @@ dpkg-deb --build penguinsay  # Create the .deb package
 sudo dpkg -i penguinsay.deb  # Install the package
 ```
 
-- Special notes about Debian"
-  - Debian packages require files to be named and at locations like `usr/local/bin/penguinsay`.
-    - This defines where they will be installed to relative to `/` on the machine.
-  - The directory of the package files (`penguinsay/`) will be the same as the package installer's `.deb` basename.
-  - The package installer will appear at `penguinsay.deb` in the same directory as (`penguinsay/`) regardless of the PWD from where the `dpkg-deb --build` command was run.
-    - For `deb/penguinsay` it will be at `deb/penguinsay.deb`.
+- Special notes about Debian
+  - The script file at `usr/local/bin/penguinsay` must be pre-named and already executable
+    - This is because this installer does not use a `postinst` script like some `.deb` packages may
+    - This package simply places the files as they appear in the `DEBIAN/` directory
+  - Debian packages require files to be named and at locations like `usr/local/bin/penguinsay`
+    - This defines where they will be installed to relative to `/` on the machine
+  - The directory of the package files (`penguinsay/`) will be the same as the package installer's `.deb` basename
+  - The package installer will appear at `penguinsay.deb` in the same directory as (`penguinsay/`) regardless of the PWD from where the `dpkg-deb --build` command was run
+    - For `deb/penguinsay` it will be at `deb/penguinsay.deb`
 
 | **Uninstall Debian package** :$ (optional)
 
@@ -218,7 +224,6 @@ License:        GPL
 URL:            https://github.com/JesseSteele/penguinsay
 
 BuildArch:      noarch
-BuildRequires:  bash
 Requires:       bash
 
 %description
@@ -241,10 +246,12 @@ install -m 755 %{_sourcedir}/penguinsay.sh %{buildroot}/usr/local/bin/penguinsay
 /usr/local/bin/penguinsay
 
 %changelog
+* Thu Jan 01 1970 Jesse <penguinsay@inkisaverb.com> - 1.0.0-1
+- Something started
 ```
 
 - Create directory: `rpm/rpmbuild/SOURCES/`
-- Place file `penguinsay.sh` in directory `rpm/rpmbuild/SOURCES/penguinsay/`
+- Place file `penguinsay.sh` in directory `rpm/rpmbuild/SOURCES/`
 - Install the `rpm-build` and `rpmdevtools` packages
 
 | **RedHat/CentOS** :$
@@ -275,11 +282,11 @@ sudo rpm -i ~/rpmbuild/RPMS/noarch/penguinsay-1.0.0-1.noarch.rpm  # Install the 
 ```
 
 - Special notes about RPM:
-  - RPM requires the build be done from `~/rpmbuild/`.
-  - The resulting `.rpm` fill will be at: `~/rpmbuild/RPMS/noarch/penguinsay-1.0.0-1.noarch.rpm`.
+  - RPM requires the build be done from `~/rpmbuild/`
+  - The resulting `.rpm` fill will be at: `~/rpmbuild/RPMS/noarch/penguinsay-1.0.0-1.noarch.rpm`
     - This file might actually have a different name, but should be in the same directory (`~/rpmbuild/RPMS/noarch/`)
-  - `noarch` means it works on any architecture.
-    - This part of the filename was set in the `.spec` file with `BuildArch: noarch`.
+  - `noarch` means it works on any architecture
+    - This part of the filename was set in the `.spec` file with `BuildArch: noarch`
 
 | **Uninstall RedHat/CentOS package** :$ (optional)
 
