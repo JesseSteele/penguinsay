@@ -68,8 +68,8 @@ Instructions explain each in detail to create these packages from scratch...
 
 ```
 arch/
-├─penguinsay.sh
-└─PKGBUILD
+├─ penguinsay.sh
+└─ PKGBUILD
 ```
 
 - Create directory: `arch`
@@ -139,13 +139,13 @@ sudo pacman -R penguinsay
 
 ```
 deb/
-└─penguinsay/
-  ├─DEBIAN/
-  │ └─control
-  └─usr/
-    └─local/
-      └─bin/
-        └─penguinsay
+└─ penguinsay/
+   ├─ DEBIAN/
+   │  └─ control
+   └─ usr/
+      └─ local/
+         └─ bin/
+            └─ penguinsay
 ```
 
 - Create directories: `deb/penguinsay/DEBIAN`
@@ -202,11 +202,11 @@ sudo apt-get remove penguinsay
 
 ```
 rpm/
-└─rpmbuild/
-  ├─SPECS/
-  │ └─penguinsay.spec
-  └─SOURCES/
-    └─penguinsay.sh
+└─ rpmbuild/
+   ├─ SPECS/
+   │  └─ penguinsay.spec
+   └─ SOURCES/
+      └─ penguinsay.sh
 ```
 
 - Create directories: `rpm/rpmbuild/SPECS`
