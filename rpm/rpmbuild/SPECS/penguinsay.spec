@@ -29,5 +29,6 @@ install -m 755 %{_sourcedir}/penguinsay.sh %{buildroot}/usr/local/bin/penguinsay
 /usr/local/bin/penguinsay
 
 %changelog
-* Thu Jan 01 1970 Jesse <penguinsay@inkisaverb.com> - 1.0.0-1
-- Something started
+-------------------------------------------------------------------
+Thu Jan 01 00:00:00 UTC 1970 501webapp@inkisaverb.com
+- Something started, probably with v1.0.0-1

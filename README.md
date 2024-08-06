@@ -126,7 +126,7 @@ sudo pacman -U penguinsay-1.0.0-1-any.pkg.tar.zst
   - `makepkg` must be run from the same directory containing `PKGBUILD`
   - The `.pkg.tar.zst` file will appear inside the containing directory
 
-| **Uninstall Arch package** :$ (optional)
+| **Remove Arch package** :$ (optional)
 
 ```console
 sudo pacman -R penguinsay
@@ -163,6 +163,7 @@ Architecture: all
 Maintainer: Jesse Steele <penguinsay@jessesteele.com>
 Depends: bash (>= 4.0)
 Description: Penguin talkback written in Linux for Linux
+
 ```
 
 - Create directories: `deb/penguinsay/usr/local/bin/`
@@ -189,7 +190,7 @@ sudo dpkg -i penguinsay.deb  # Install the package
   - The package installer will appear at `penguinsay.deb` in the same directory as (`penguinsay/`) regardless of the PWD from where the `dpkg-deb --build` command was run
     - For `deb/penguinsay` it will be at `deb/penguinsay.deb`
 
-| **Uninstall Debian package** :$ (optional)
+| **Remove Debian package** :$ (optional)
 
 ```console
 sudo apt-get remove penguinsay
@@ -246,8 +247,9 @@ install -m 755 %{_sourcedir}/penguinsay.sh %{buildroot}/usr/local/bin/penguinsay
 /usr/local/bin/penguinsay
 
 %changelog
-* Thu Jan 01 1970 Jesse <penguinsay@inkisaverb.com> - 1.0.0-1
-- Something started
+-------------------------------------------------------------------
+Thu Jan 01 00:00:00 UTC 1970 501webapp@inkisaverb.com
+- Something started, probably with v1.0.0-1
 ```
 
 - Create directory: `rpm/rpmbuild/SOURCES/`
@@ -287,14 +289,17 @@ sudo rpm -i ~/rpmbuild/RPMS/noarch/penguinsay-1.0.0-1.noarch.rpm  # Install the 
     - This file might actually have a different name, but should be in the same directory (`~/rpmbuild/RPMS/noarch/`)
   - `noarch` means it works on any architecture
     - This part of the filename was set in the `.spec` file with `BuildArch: noarch`
+  - The `%changelog` is for OpenSUSE's `zypper`
+    - RedHat/CentOS may want the date line like this:
+      - `* Thu Jan 01 1970 Jesse <501webapp@inkisaverb.com> - 1.0.0-1`
 
-| **Uninstall RedHat/CentOS package** :$ (optional)
+| **Remove RedHat/CentOS package** :$ (optional)
 
 ```console
 sudo dnf remove penguinsay
 ```
 
-| **Uninstall OpenSUSE package** :$ (optional)
+| **Remove OpenSUSE package** :$ (optional)
 
 ```console
 sudo zypper remove penguinsay
