@@ -1,7 +1,13 @@
 #!/bin/bash
 
 input="$@"
-# Break the test into lines 50 characters or less
+
+# Re-assign speech as slogan if no arguments entered
+if [ "$input" = "" ]; then
+  input="Penguin talkback written in Linux for Linux"
+fi
+
+# Break speech into lines of 50 characters or less
 speech=$(echo "$input" | fold -s -w50)
 
 IFS=$'\n'
@@ -34,7 +40,7 @@ cat << EOF
 $buffer  \\ \\
 $buffer   \\\\
 $buffer    \\ ,——.
-$buffer     ( @ 0)
+$buffer     ( @ o)
 $buffer     |  7 |
 $buffer    / /   \\\\
 $buffer   (  >   < )
