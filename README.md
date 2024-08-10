@@ -59,7 +59,7 @@ rm -rf ~/rpmbuild
 ## Detailed instructions per architecture
 Instructions explain each in detail to create these packages from scratch...
 
-- These instructions presume you can access [penguinsay.sh](https://github.com/JesseSteele/penguinsay/blob/main/penguinsay.sh).
+- These instructions presume you can access [penguinsay.sh](https://github.com/JesseSteele/penguinsay/blob/main/penguinsay.sh)
 
 ### I. Arch Linux Package (`penguinsay-1.0.0-1-any.pkg.tar.zst`)
 *Arch package directory structure:*
@@ -78,6 +78,7 @@ arch/
 | **`arch/PKGBUILD`** :
 
 ```
+# Maintainer: Jesse Steele <codes@jessesteele.com>
 pkgname=penguinsay
 pkgver=1.0.0
 pkgrel=1
@@ -160,7 +161,7 @@ Section: base
 Priority: optional
 #Architecture: amd64
 Architecture: all
-Maintainer: Jesse Steele <penguinsay@jessesteele.com>
+Maintainer: Jesse Steele <codes@jessesteele.com>
 Depends: bash (>= 4.0)
 Description: Penguin talkback written in Linux for Linux
 
@@ -248,7 +249,7 @@ install -m 755 %{_sourcedir}/penguinsay.sh %{buildroot}/usr/local/bin/penguinsay
 
 %changelog
 -------------------------------------------------------------------
-Thu Jan 01 00:00:00 UTC 1970 501webapp@inkisaverb.com
+Thu Jan 01 00:00:00 UTC 1970 codes@jessesteele.com
 - Something started, probably with v1.0.0-1
 ```
 
@@ -291,7 +292,7 @@ sudo rpm -i ~/rpmbuild/RPMS/noarch/penguinsay-1.0.0-1.noarch.rpm  # Install the 
     - This part of the filename was set in the `.spec` file with `BuildArch: noarch`
   - The `%changelog` is for OpenSUSE's `zypper`
     - RedHat/CentOS may want the date line like this:
-      - `* Thu Jan 01 1970 Jesse <501webapp@inkisaverb.com> - 1.0.0-1`
+      - `* Thu Jan 01 1970 Jesse Steele <codes@jessesteele.com> - 1.0.0-1`
 
 | **Remove RedHat/CentOS package** :$ (optional)
 

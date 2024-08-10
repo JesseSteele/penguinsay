@@ -4,6 +4,6 @@ Section: base
 Priority: optional
 #Architecture: amd64
 Architecture: all
-Maintainer: Jesse Steele <penguinsay@jessesteele.com>
+Maintainer: Jesse Steele <codes@jessesteele.com>
 Depends: bash (>= 4.0)
 Description: Penguin talkback written in Linux for Linux
