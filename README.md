@@ -2,6 +2,22 @@
 ## The talking penguin
 Penguin talkback written in Linux for Linux
 
+```
+ ----------------------------------------------- 
+< I am a talking penguin, written in Linux for  >
+< Linux. Does anyone want a blueberry bagel?    >
+ ----------------------------------------------- 
+                                              \ \
+                                               \\
+                                                \ ,——.
+                                                 ( @ o)
+                                                 |  7 |
+                                                / /   \\
+                                               (  >   < )
+                                              /  \_   _/ \
+                                              \____) (___/
+```
+
 ## Create the simple Linux install package for `penguinsay`
 This is a guide to create an installer package for the `penguinsay` command on:
 1. Arch (Manjaro, Black Arch, et al)
