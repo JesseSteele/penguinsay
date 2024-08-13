@@ -173,7 +173,7 @@ deb/
 ```
 Package: penguinsay
 Version: 1.0.0
-Section: base
+Section: games
 Priority: optional
 #Architecture: amd64
 Architecture: all
