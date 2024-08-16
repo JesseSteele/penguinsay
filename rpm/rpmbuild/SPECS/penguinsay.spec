@@ -22,11 +22,11 @@ Other commands could go here...
 # We could put some commands here if we needed to build from source
 
 %install
-mkdir -p %{buildroot}/usr/local/bin
-install -m 755 %{_sourcedir}/penguinsay.sh %{buildroot}/usr/local/bin/penguinsay
+mkdir -p %{buildroot}/usr/bin
+install -m 755 %{_sourcedir}/penguinsay.sh %{buildroot}/usr/bin/penguinsay
 
 %files
-/usr/local/bin/penguinsay
+/usr/bin/penguinsay
 
 %changelog
 -------------------------------------------------------------------
