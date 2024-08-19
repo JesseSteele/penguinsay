@@ -106,7 +106,8 @@ license=('GPL')
 depends=('bash')  # Dependency on bash package
 #source=("$pkgname-$pkgver.sh")
 source=("$pkgname.sh")
-sha256sums=('SKIP')
+# sha256sums=('SKIP') # Can use this
+sha256sums=('3641df922945015a4bf5477947048239fa71795f1fe2d2b3f28c34d8c7214dd5')
 
 package() {
   cd "$srcdir"
