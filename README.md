@@ -265,8 +265,7 @@ install -m 755 %{_sourcedir}/penguinsay.sh %{buildroot}/usr/bin/penguinsay
 /usr/bin/penguinsay
 
 %changelog
--------------------------------------------------------------------
-Thu Jan 01 00:00:00 UTC 1970 codes@jessesteele.com
+* Thu Jan 01 1970 Jesse Steele <codes@jessesteele.com> - 1.0.0-1
 - Something started, probably with v1.0.0-1
 ```
 
@@ -307,9 +306,7 @@ sudo rpm -i ~/rpmbuild/RPMS/noarch/penguinsay-1.0.0-1.noarch.rpm  # Install the 
     - This file might actually have a different name, but should be in the same directory (`~/rpmbuild/RPMS/noarch/`)
   - `noarch` means it works on any architecture
     - This part of the filename was set in the `.spec` file with `BuildArch: noarch`
-  - The `%changelog` is for OpenSUSE's `zypper`
-    - RedHat/CentOS may want the date line like this:
-      - `* Thu Jan 01 1970 Jesse Steele <codes@jessesteele.com> - 1.0.0-1`
+  - If you get `changelog` or `bad date` error, then consider yourself normal
 
 | **Remove RedHat/CentOS package** :$ (optional)
 

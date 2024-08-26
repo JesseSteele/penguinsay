@@ -29,6 +29,5 @@ install -m 755 %{_sourcedir}/penguinsay.sh %{buildroot}/usr/bin/penguinsay
 /usr/bin/penguinsay
 
 %changelog
--------------------------------------------------------------------
-Thu Jan 01 00:00:00 UTC 1970 codes@jessesteele.com
+* Thu Jan 01 1970 Jesse Steele <codes@jessesteele.com> - 1.0.0-1
 - Something started, probably with v1.0.0-1
